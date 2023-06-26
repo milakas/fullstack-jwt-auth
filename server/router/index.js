@@ -1,12 +1,17 @@
 const Router = require('express').Router;
 const userController = require('../controllers/user-controller');
 const router = new Router();
+const { body } = require('express-validator');
 
-router.post('/signup', userController.signup);
+router.post(
+  '/signup',
+  body('email').isEmail(),
+  body('password').isLength({ min: 3, max: 32 }),
+  userController.signup
+);
 router.post('/login', userController.login);
 router.post('/logout', userController.logout);
-router.get('/activate/:link', userController.activate); //активация по ссылке, ктр будет приходить на почту
-router.get('/refresh', userController.refresh); //перезаписывает токен
+router.get('/activate/:link', userController.activate);
 router.get('/users', userController.getUsers);
 
 module.exports = router;
