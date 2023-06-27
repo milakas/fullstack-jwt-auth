@@ -7,7 +7,7 @@ class UserController {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return next(ApiError.BadRequiest('Ошибка валидации', errors.array()));
+        return next(ApiError.BadRequest('Некорректные данные', errors.array()));
       }
       const { email, password } = req.body;
       const userData = await userService.signup(email, password);

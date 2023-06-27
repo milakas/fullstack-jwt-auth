@@ -1,0 +1,108 @@
+.login-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__title {
+    margin: 0 0 15px;
+    text-align: center;
+  }
+
+  &__input {
+    $input-size: 100%;
+    font-family: inherit;
+    padding: 15px;
+    margin-bottom: 10px;
+    width: $input-size;
+    min-width: $input-size;
+    max-width: $input-size;
+    @include adaptiv-font(14, 12);
+    border: none;
+    border-radius: 10px;
+    outline: 1px solid lighten($coloron-secondary, 60%);
+    transition: outline 0.3s ease-in-out;
+
+    &:focus {
+      outline: 1px solid darken($coloron-secondary, 20%);
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    height: auto;
+    font-family: inherit;
+    @include adaptiv-padding-x(35, 20);
+    @include adaptiv-padding-y(10, 8);
+    @include adaptiv-font(16, 14);
+    border: none;
+    overflow: hidden;
+    background-color: #fefefe;
+
+    outline: 1px solid lighten($coloron-secondary, 60%);
+    transition: all 0.3 ease;
+
+    &:hover {
+      background-color: $color-primary;
+      box-shadow: 0 0 6px #c5c5c5b0;
+    }
+
+    &:active {
+      box-shadow: 0 0 12px #c5c5c5b0;
+    }
+  }
+
+  &__wrap {
+    position: relative;
+    z-index: 1;
+
+    padding: 34px;
+    width: 360px;
+    max-width: 360px;
+    border-radius: 10px;
+    background-color: $color-primary;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+
+    & .message {
+      margin: 15px 0 0;
+      text-align: center;
+
+      & a {
+        color: darken($color: $light-pink, $amount: 20%);
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    @include adaptiv-font(14, 12);
+    background-color: $light-pink;
+    color: white;
+  }
+}
+
+.animated {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

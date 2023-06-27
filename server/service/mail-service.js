@@ -21,9 +21,10 @@ class MailService {
       subject: 'Активация аккаунта на ' + process.env.API_URl,
       text: '',
       html: `
-        <div>
-          <h1>Для активации перейдите по ссылке</h1>
-          <a href="${link}">${link}</a>
+      <div style="font-family: Arial, sans-serif; background-color: #f8f8f8; padding: 20px;">
+        <h1 style="color: #333; font-size: 20px;">Спасибо за регистрацию 💛</h1>
+        <p style="color: #333; font-size: 16px;">Для активации аккаунта, пожалуйста, перейдите по ссылке:</p>
+        <a href="${link}" style="color: #007bff; text-decoration: none; font-size: 16px;">${link}</a>
         </div>
       `,
     });

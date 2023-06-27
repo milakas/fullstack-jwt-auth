@@ -10,7 +10,7 @@ class UserService {
   async signup(email, password) {
     const candidate = await UserModel.findOne({ email });
     if (candidate) {
-      throw ApiError.BadRequiest(
+      throw ApiError.BadRequest(
         `Пользователь с почтовым адресом ${email} уже существует`
       );
     }
@@ -39,7 +39,7 @@ class UserService {
     const user = await UserModel.findOne({ activationLink });
 
     if (!user) {
-      throw ApiError.BadRequiest('Некорректная ссылка активации');
+      throw ApiError.BadRequest('Некорректная ссылка активации');
     }
     user.isActivated = true;
     await user.save();
@@ -48,7 +48,7 @@ class UserService {
   async login(email, password) {
     const credentials = await UserModel.findOne({ email });
     if (!credentials) {
-      throw ApiError.BadRequiest(
+      throw ApiError.BadRequest(
         `Пользователь с почтовым адресом ${email} не существует`
       );
     }
@@ -56,7 +56,7 @@ class UserService {
     const isPassEquals = await bcrypt.compare(password, credentials.password);
     //todo: сделать возможность изменения пароля
     if (!isPassEquals) {
-      throw ApiError.BadRequiest('Неверный пароль');
+      throw ApiError.BadRequest('Неверный пароль');
     }
 
     const userDto = new UserDto(credentials);
